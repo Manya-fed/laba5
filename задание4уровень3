@@ -1,0 +1,25 @@
+def c(m, s, t):
+    r = []
+    if t == 1:
+        for i in range(0, s):
+            for j in range(i, s):
+                r.append(m[i][j])
+    if t == 2:
+        for i in range(0, s):
+            for j in range(i, s):
+                r.append(m[j][i])
+    return r
+def su(v):
+    return sum(x**2 for x in v)
+n = int(input("Введите размерность квадратной матрицы: "))
+
+m = [[0] * n for i in range(n)]
+
+for i in range(n):
+    z = input(f"Введите элементы {i + 1} строки матрицы, разделяя значения элементов пробелом: ")
+    w = list(map(int, z.split()))
+    for j in range(n):
+        m[i][j] = w[j]
+t = int(input('введите 1 для перессылки вектора на верхний треугольник матрицы; введите 2 - на нижний'))
+print(c(m, n, t), "сумма квадратов:", su(c(m, n, t)))
+
